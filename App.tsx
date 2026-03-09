@@ -5,7 +5,8 @@ import TaskItem from "./components/TaskItem";
 import FilterTabs from "./components/FilterTabs";
 import { Task } from "./types/task";
 import { loadTasks, saveTasks } from "./storage/taskStorage";
-import { v4 as uuidv4 } from "uuid";
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
 type Filter = "all" | "active" | "completed";
 
@@ -22,11 +23,11 @@ export default function App() {
   }, [tasks]);
 
   const addTask = (title: string) => {
-    const newTask: Task = {
-      id: uuidv4(),
-      title,
-      completed: false,
-    };
+   const newTask: Task = {
+  id: Date.now().toString(),
+  title,
+  completed: false,
+};
 
     setTasks([...tasks, newTask]);
   };
